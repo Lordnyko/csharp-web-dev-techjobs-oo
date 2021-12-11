@@ -31,29 +31,22 @@ namespace TechJobsOO
             JobCoreCompetency = jobCoreCompetency;
         }
         // TODO: Generate Equals() and GetHashCode() methods.
+
         public override bool Equals(object obj)
         {
             return obj is Job job &&
-                   Id == job.Id &&
-                   EqualityComparer<PositionType>.Default.Equals(JobType, job.JobType);
+                   Id == job.Id;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, JobType);
+            return HashCode.Combine(Id);
         }
 
         public override string ToString()
         {
-            return $@"
-                    ID: {Id}
-                    Name: {ValueChecker(Name)}
-                    Employer: {ValueChecker(EmployerName.Value)}
-                    Location: {ValueChecker(EmployerLocation.Value)}
-                    Position Type: {ValueChecker(JobType.Value)}
-                    Core Competency: {ValueChecker(JobCoreCompetency.Value)}
-                    ";
-            
+            return $@"\nID: {Id}\nName: {ValueChecker(Name)}\nEmployer: {ValueChecker(EmployerName.Value)}\nLocation: {ValueChecker(EmployerLocation.Value)}\nPosition Type: {ValueChecker(JobType.Value)}\nCore Competency: {ValueChecker(JobCoreCompetency.Value)}\n";
+
         }
 
         private string ValueChecker(string item)
@@ -67,5 +60,6 @@ namespace TechJobsOO
                 return item;
             }
         }
+
     }
 }

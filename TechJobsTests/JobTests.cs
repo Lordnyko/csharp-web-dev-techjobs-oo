@@ -66,15 +66,8 @@ namespace TechJobsTests
         [TestMethod]
         public void TestForEmptyField()
         {
-            string expected_string = $@"
-                   ID: {test_job4.Id}
-                   Name: Product tester
-                   Employer: ACME
-                   Location: Desert
-                   Position Type: Quality control
-                   Core Competency: Data not available
-                   ";
-            Assert.IsTrue(expected_string == test_job4.ToString());
+            string expected_string = $@"\nID: {test_job4.Id}\nName: {test_job4.Name}\nEmployer: {test_job4.EmployerName}\nLocation: {test_job4.EmployerLocation}\nPosition Type: {test_job4.JobType}\nCore Competency: Data not available\n";
+            Assert.AreEqual(expected_string, test_job4.ToString());
         }
     }
 }
