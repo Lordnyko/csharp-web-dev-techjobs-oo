@@ -7,7 +7,7 @@ namespace TechJobsOO
     public abstract class JobField
     {
         public int Id { get; }
-        public static int nextId = 1;
+        static private int nextId = 1;
         public string Value { get; set; }
 
         public JobField()
@@ -19,6 +19,7 @@ namespace TechJobsOO
         public JobField(string value) : this()
         {
             Value = value;
+
         }
 
         public override string ToString()
@@ -26,11 +27,16 @@ namespace TechJobsOO
             return Value;
         }
 
-        //public override int GetHashCode()
-        //{
-        //    return HashCode.Combine(Id);
-        //}
+        public override bool Equals(object obj)
+        {
+            return obj is JobField field &&
+                   Id == field.Id;
+        }
 
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
     }
 
 }
